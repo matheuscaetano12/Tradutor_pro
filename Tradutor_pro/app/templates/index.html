@@ -1,0 +1,140 @@
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tradutor Pro</title>
+<link rel="stylesheet" href="/static/css/style.css?v=2">
+
+</head>
+<body>
+ 
+<header>
+ <div class="brand"><span class="dot"></span> Tradutor Pro</div>
+ <div class="top-actions">
+   <button class="btn" id="btnDownload" disabled>
+     ⬇ Download
+   </button>
+   <button class="btn btn-primary" id="btnExport" disabled>
+     📄 Exportar
+   </button>
+ </div>
+</header>
+ 
+<main>
+ <div class="orb-wrap" id="orbWrap">
+   <div class="orb-ring"></div>
+   <div class="orb"></div>
+ </div>
+ 
+ <h1>Pronto para traduzir algo novo?</h1>
+ <p class="subtitle">Cole um texto rápido ou envie um livro inteiro para traduzir</p>
+ 
+ <div class="panels">
+ 
+   <!-- TEXTO -->
+   <section class="panel">
+     <div class="panel-title">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+       Traduzir texto
+     </div>
+ 
+     <div class="row">
+       <select id="fromLang">
+         <option value="auto">Detectar idioma</option>
+         <option value="en">Inglês</option>
+         <option value="pt">Português</option>
+         <option value="es">Espanhol</option>
+         <option value="fr">Francês</option>
+       </select>
+       <button class="swap-btn" id="swapBtn" title="Inverter idiomas">⇄</button>
+       <select id="toLang">
+         <option value="pt">Português</option>
+         <option value="en">Inglês</option>
+         <option value="es">Espanhol</option>
+         <option value="fr">Francês</option>
+       </select>
+     </div>
+ 
+     <label class="field-label" for="sourceText">Texto original</label>
+     <textarea id="sourceText" placeholder="Digite ou cole o texto que deseja traduzir, sem precisar de arquivo..." maxlength="2000"></textarea>
+     <div class="char-count"><span id="charCount">0</span>/2000</div>
+ 
+     <label class="field-label" for="targetText">Tradução</label>
+     <textarea id="targetText" placeholder="A tradução vai aparecer aqui..." readonly></textarea>
+ 
+     <div class="actions">
+       <button class="btn btn-primary" id="btnTranslateText">Traduzir texto</button>
+     </div>
+   </section>
+ 
+   <!-- ARQUIVOS / LIVROS -->
+   <section class="panel">
+     <div class="panel-title">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+       Traduzir livro / arquivo
+     </div>
+ 
+     <label class="dropzone" id="dropzone" for="fileInput">
+       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+       <div class="dz-title">Arraste seu livro aqui</div>
+       <div class="dz-sub">ou clique para escolher um arquivo (.pdf, .epub, .docx, .txt)</div>
+     </label>
+     <input type="file" id="fileInput" multiple accept=".pdf,.epub,.docx,.txt">
+ 
+     <div class="file-list" id="fileList"></div>
+ 
+     <div class="actions">
+       <button class="btn btn-primary" id="btnTranslateFiles" disabled>Traduzir arquivos</button>
+     </div>
+   </section>
+ 
+ </div>
+ 
+ <div class="status-bar" id="statusBar"></div>
+</main>
+
+<!-- MODAL: escolha de idiomas ao soltar/selecionar arquivo -->
+<div class="modal-overlay" id="langModalOverlay">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h2>Escolha os idiomas de tradução</h2>
+      <button class="modal-close" id="langModalClose" title="Cancelar">&times;</button>
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="field-label" for="modalFromLang">Idioma de origem:</label>
+        <select id="modalFromLang">
+          <option value="auto">🌐 Detectar idioma</option>
+          <option value="en" selected>🇬🇧 Inglês</option>
+          <option value="pt">🇵🇹 Português</option>
+          <option value="es">🇪🇸 Espanhol</option>
+          <option value="fr">🇫🇷 Francês</option>
+        </select>
+        <span class="modal-hint">Auto-detectado (mude se necessário)</span>
+      </div>
+
+      <div class="modal-field">
+        <label class="field-label" for="modalToLang">Idioma de destino:</label>
+        <select id="modalToLang">
+          <option value="pt" selected>🇵🇹 Português</option>
+          <option value="en">🇬🇧 Inglês</option>
+          <option value="es">🇪🇸 Espanhol</option>
+          <option value="fr">🇫🇷 Francês</option>
+        </select>
+        <span class="modal-hint">Auto-sugerido (mude se necessário)</span>
+      </div>
+    </div>
+
+    <button class="btn btn-primary modal-confirm" id="langModalConfirm">Traduzir documento</button>
+  </div>
+</div>
+
+<footer>Tradutor Pro · interface de demonstração</footer>
+ 
+
+
+
+ <script src="/static/js/app.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+python-dotenv
+python-multipart
+openai
+pypdf
+python-docx
+ebooklib
+beautifulsoup4
+deep-translator>=1.11.4
+fpdf2>=2.7.9
+reportlab
+pdfplumber
